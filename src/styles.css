@@ -1,0 +1,33 @@
+html,
+body {
+  color: white;
+  font-family: 'Amatic SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#spook-panel {
+  background: #272727;
+  border: 1px solid black;
+  border-radius: 2px;
+  height: 80px;
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#heart-rate-container {
+  width: 150px;
+}
+
+#heart-rate-graph {
+  flex: 1;
+  position: relative;
+}
+
+#heart-rate-scares {
+  width: 150px;
+}

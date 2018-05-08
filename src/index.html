@@ -5,10 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Awesome Interactive Integration</title>
   <script src="https://mixercc.azureedge.net/lib/std-v0.2.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+  <link href="./styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-  <button id="hello-world">Hello world!</button>
-
+  <div id="spook-panel">
+    <div id="heart-rate-container">
+      <span id="heart-rate">122</span>
+      BPM
+    </div>
+    <div id="heart-rate-graph">
+      Analyzing Pulse . . .
+      <canvas id="pulse" width="400" height="100%"></canvas>
+    </div>
+    <div id="heart-rate-scares">
+      <div>Scares</div>
+      <div id="hear-rae-scare-number">20</div>
+    </div>
+  </div>
   <script src="./scripts.js"></script>
 </body>
 </html>

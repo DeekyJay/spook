@@ -17,10 +17,10 @@
         "reorderEnabled": true,
         "title": "",
         "type": "stack",
-        "width": 25
+        "width": 23.844928305894854
       },
       {
-        "activeItemIndex": 1,
+        "activeItemIndex": 0,
         "content": [
           {
             "componentName": "Controls",
@@ -29,20 +29,13 @@
             "title": "Controls",
             "type": "component",
             "width": 0.75
-          },
-          {
-            "componentName": "WebpackConsole",
-            "isClosable": true,
-            "reorderEnabled": true,
-            "title": "Webpack Console",
-            "type": "component"
           }
         ],
         "isClosable": true,
         "reorderEnabled": true,
         "title": "",
         "type": "stack",
-        "width": 75
+        "width": 76.15507169410516
       }
     ],
     "isClosable": true,
