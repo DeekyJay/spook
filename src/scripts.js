@@ -1,4 +1,8 @@
 window.addEventListener('load', function initMixer() {
+  var elHeartRate = document.getElementById('heart-rate');
+  var elScares = document.getElementById('heart-rate-scare-number');
+  var scares = 0;
+
   mixer.display.position().subscribe(handleVideoResized);
 
   // Move the video by a static offset amount
@@ -10,22 +14,59 @@ window.addEventListener('load', function initMixer() {
     right: offset,
   });
 
+  Chart.defaults.global.tooltips = false;
 
   var ctx = document.getElementById("pulse").getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
       datasets: [{
-        label: '',
-        data: [80, 110, 122, 128, 124, 120, 40],
-        backgroundColor: 'rgba(0, 0, 0, 0.0)',
+        label: "",
+        data: [],
         borderColor: 'green',
-        borderWidth: 2
-      }, ]
+        fill: false,
+        lineTension: 0.1
+      }]
     },
     options: {
       legend: {
         display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            // maxTickLimit: 20,
+            // min: 80,
+            // max: 130
+          }
+        }],
+        xAxes: [{
+          type: 'realtime',
+          // position: 'bottom',
+          display: false
+        }]
+      },
+      plugins: {
+        streaming: { // enabled by default
+          duration: 20000, // data in the past 20000 ms will be displayed
+          refresh: 1000, // onRefresh callback will be called every 1000 ms
+          delay: 1000, // delay of 1000 ms, so upcoming values are known before plotting a line
+          frameRate: 30, // chart is drawn 30 times every second
+
+          // a callback to update datasets
+          onRefresh: function (chart) {
+            const newPulse = Math.random() * (140 - 80) + 80;
+            if (newPulse > 130) {
+              scares++;
+              elScares.innerText = scares;
+            }
+            elHeartRate.innerText = newPulse.toFixed(0);
+            chart.data.datasets[0].data.push({
+              x: Date.now(),
+              y: newPulse
+            });
+          }
+        }
       }
     }
   });

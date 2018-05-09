@@ -7,6 +7,8 @@
   <script src="https://mixercc.azureedge.net/lib/std-v0.2.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+  <script src="./chartjs-plugin-streaming.min.js"></script>
   <link href="./styles.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
@@ -16,12 +18,11 @@
       BPM
     </div>
     <div id="heart-rate-graph">
-      Analyzing Pulse . . .
-      <canvas id="pulse" width="400" height="100%"></canvas>
+      <canvas id="pulse" height="32"></canvas>
     </div>
     <div id="heart-rate-scares">
       <div>Scares</div>
-      <div id="hear-rae-scare-number">20</div>
+      <div id="heart-rate-scare-number">20</div>
     </div>
   </div>
   <script src="./scripts.js"></script>

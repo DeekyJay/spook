@@ -1,0 +1,25 @@
+{
+  "coverUrl": null,
+  "createdAt": "2018-05-08T19:15:01.000Z",
+  "deletedAt": null,
+  "description": null,
+  "hasPublishedVersions": false,
+  "id": 239680,
+  "installation": null,
+  "name": "Spook",
+  "ownerId": 73314,
+  "typeId": 130909,
+  "updatedAt": "2018-05-08T19:15:01.000Z",
+  "versions": [
+    {
+      "changelog": "Initial release",
+      "createdAt": "2018-05-08T19:15:01.000Z",
+      "id": 244513,
+      "installation": null,
+      "state": "draft",
+      "updatedAt": "2018-05-08T19:15:01.000Z",
+      "version": "0.1.0",
+      "versionOrder": 256
+    }
+  ]
+}
