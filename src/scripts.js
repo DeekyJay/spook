@@ -1,9 +1,13 @@
+var recentPulse = 0;
+
 window.addEventListener('load', function initMixer() {
   var elHeartRate = document.getElementById('heart-rate');
   var elScares = document.getElementById('heart-rate-scare-number');
   var scares = 0;
 
-  mixer.display.position().subscribe(handleVideoResized);
+  //mixer.display.position().subscribe(handleVideoResized);
+
+  mixer.socket.on('onControlUpdate', handleControlUpdate);
 
   // Move the video by a static offset amount
   const offset = 50;
@@ -35,9 +39,7 @@ window.addEventListener('load', function initMixer() {
       scales: {
         yAxes: [{
           ticks: {
-            // maxTickLimit: 20,
-            // min: 80,
-            // max: 130
+            min: 60
           }
         }],
         xAxes: [{
@@ -55,7 +57,7 @@ window.addEventListener('load', function initMixer() {
 
           // a callback to update datasets
           onRefresh: function (chart) {
-            const newPulse = Math.random() * (140 - 80) + 80;
+            const newPulse = recentPulse;
             if (newPulse > 130) {
               scares++;
               elScares.innerText = scares;
@@ -81,4 +83,8 @@ function handleVideoResized(position) {
   overlay.style.top = `${player.top + player.height}px`;
   overlay.style.left = `${player.left}px`;
   overlay.style.width = `${player.width - 20}px`;
+}
+
+function handleControlUpdate (update) {
+  recentPulse = update.controls[0].meta.pulse.value;
 }

@@ -6,7 +6,7 @@
         {
           "controls": [
             {
-              "controlID": "hello-world",
+              "controlID": "pulse",
               "kind": "generic"
             }
           ],
@@ -14,6 +14,6 @@
         }
       ]
     },
-    "savedAt": 1525806862639
+    "savedAt": 1525835308838
   }
 ]

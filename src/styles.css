@@ -26,6 +26,7 @@ body {
 #heart-rate-graph {
   flex: 1;
   position: relative;
+  height: 100%;
 }
 
 #heart-rate-scares {
