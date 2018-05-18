@@ -1,13 +1,39 @@
 var recentPulse = 0;
+var shakeInterval;
 
 window.addEventListener('load', function initMixer() {
   var elHeartRate = document.getElementById('heart-rate');
   var elScares = document.getElementById('heart-rate-scare-number');
+  var elGhost = document.getElementById('ghost-image');
+  var elGhostMsg = document.getElementById('ghost-message');
   var scares = 0;
 
-  //mixer.display.position().subscribe(handleVideoResized);
+  mixer.display.position().subscribe(handleVideoResized);
 
   mixer.socket.on('onControlUpdate', handleControlUpdate);
+
+  shakeit(elGhost);
+  shakeInterval = setInterval(function () {
+    shakeit(elGhost);
+  }, 5000);
+
+  elGhost.addEventListener('mouseover', function (ev) {
+    clearInterval(shakeInterval);
+    elGhost.style = '';
+    elGhost.setAttribute('class', 'hover');
+    elGhostMsg.setAttribute('class', 'hover');
+  });
+
+  elGhost.addEventListener('mouseout', function (ev) {
+    shakeInterval = setInterval(function () {
+      shakeit(elGhost);
+    }, 5000);
+    elGhost.setAttribute('class', 'hoverout');
+    setTimeout(function () {
+      elGhost.setAttribute('class', '');
+    }, 500);
+    elGhostMsg.setAttribute('class', '');
+  });
 
   // Move the video by a static offset amount
   const offset = 50;
@@ -78,13 +104,47 @@ window.addEventListener('load', function initMixer() {
 
 function handleVideoResized(position) {
   const overlay = document.getElementById('spook-panel');
+  var ghost = document.getElementById('ghost');
   const player = position.connectedPlayer;
   overlay.style.position = 'absolute';
   overlay.style.top = `${player.top + player.height}px`;
   overlay.style.left = `${player.left}px`;
   overlay.style.width = `${player.width - 20}px`;
+  ghost.style.position = 'absolute';
+  ghost.style.top = `${player.top}px`;
+  ghost.style.left = `${player.left}px`;
+  ghost.style.width = `${player.width}px`;
+  ghost.style.height = `${player.height}px`;
 }
 
-function handleControlUpdate (update) {
+function handleControlUpdate(update) {
   recentPulse = update.controls[0].meta.pulse.value;
+}
+
+
+var interval;
+shakeit = function (element) {
+  element.style.display = "block";
+  var x = -1;
+  interval = setInterval(function () {
+    if (x == -1) {
+      element.style.transform = "rotate(-160deg)"
+    } else {
+      switch (x) {
+        case 0:
+          element.style.transform = "rotate(-145deg)";
+          break;
+        case 1:
+          element.style.transform = "rotate(-165deg)";
+          break;
+        case 2:
+          element.style.transform = "rotate(-165deg)"
+          break;
+        default:
+          element.style.transform = "rotate(-155deg)"
+          clearInterval(interval);
+      }
+    }
+    x++;
+  }, 50)
 }
