@@ -20,7 +20,7 @@
         "width": 28.03109737210637
       },
       {
-        "activeItemIndex": 1,
+        "activeItemIndex": 0,
         "content": [
           {
             "componentName": "Controls",
@@ -29,13 +29,6 @@
             "title": "Controls",
             "type": "component",
             "width": 0.75
-          },
-          {
-            "componentName": "WebpackConsole",
-            "isClosable": true,
-            "reorderEnabled": true,
-            "title": "Webpack Console",
-            "type": "component"
           }
         ],
         "isClosable": true,

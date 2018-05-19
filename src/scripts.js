@@ -117,7 +117,6 @@ function handleVideoResized(position) {
   ghost.style.height = `${player.height}px`;
 }
 
-<<<<<<< HEAD
 function handleControlUpdate (update) {
   const control = update.controls[0];
   if (control.controlID === 'pulse') {
@@ -126,15 +125,6 @@ function handleControlUpdate (update) {
     recentScare = control.meta.scares.value;
   }
 }
-
-function handleScareUpdate (update) {
-  
-}
-=======
-function handleControlUpdate(update) {
-  recentPulse = update.controls[0].meta.pulse.value;
-}
-
 
 var interval;
 shakeit = function (element) {
@@ -162,4 +152,3 @@ shakeit = function (element) {
     x++;
   }, 50)
 }
->>>>>>> manual-scare
