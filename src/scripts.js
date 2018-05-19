@@ -5,7 +5,7 @@ window.addEventListener('load', function initMixer() {
   var elScares = document.getElementById('heart-rate-scare-number');
   var scares = 0;
 
-  //mixer.display.position().subscribe(handleVideoResized);
+  mixer.display.position().subscribe(handleVideoResized);
 
   mixer.socket.on('onControlUpdate', handleControlUpdate);
 
@@ -86,5 +86,14 @@ function handleVideoResized(position) {
 }
 
 function handleControlUpdate (update) {
-  recentPulse = update.controls[0].meta.pulse.value;
+  const control = update.controls[0];
+  if (control.controlID === 'pulse') {
+    recentPulse = control.meta.pulse.value;
+  } else {
+    recentScare = control.meta.scares.value;
+  }
+}
+
+function handleScareUpdate (update) {
+  
 }

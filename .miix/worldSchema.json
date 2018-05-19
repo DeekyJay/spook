@@ -8,12 +8,16 @@
             {
               "controlID": "pulse",
               "kind": "generic"
+            },
+            {
+              "controlID": "scares",
+              "kind": "generic"
             }
           ],
           "sceneID": "default"
         }
       ]
     },
-    "savedAt": 1525835308838
+    "savedAt": 1526747891530
   }
 ]

@@ -1,6 +1,8 @@
 import * as WebSocket from 'ws';
 var noble = require('noble-uwp');
 
+// versionID: 244513
+
 var pulse = 0;
 
 noble.on('stateChange', function(state: any) {
@@ -82,6 +84,7 @@ client.open({
     return client.ready(true);
 }).then(() => {
     setInterval(() => {
+        calculateIfSpike(pulse);
         client.updateControls({
             sceneID: 'default',
             controls: [
@@ -97,3 +100,45 @@ client.open({
         })
     }, 2000);
 });
+
+
+const data: number[] = [];
+let scares: number = 0;
+function calculateIfSpike(value: number) {
+    if (!value) {
+        return;
+    }
+
+    let total = 0;
+    for (let i = 0; i < data.length; i++) {
+        total += data[i];
+    }
+
+    data.push(value);
+    if (data.length === 10) {
+        data.shift();
+    } else {
+        return;
+    }
+
+    let threshold = 1.4;
+    const avg = Math.floor(total / data.length);
+    
+    console.log(value, avg * threshold);
+    if (value > (avg * threshold)) {
+        scares = scares + 1;
+        client.updateControls({
+            sceneID: 'default',
+            controls: [
+                {
+                    controlID: 'scares',
+                    meta: {
+                        scares: {
+                            value: scares
+                        }
+                    }
+                }
+            ]
+        })
+    }
+}

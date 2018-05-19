@@ -11,7 +11,7 @@ body {
   border: 1px solid black;
   border-radius: 2px;
   height: 80px;
-  margin: 10px 0;
+  margin-top: 5px;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -20,15 +20,15 @@ body {
 }
 
 #heart-rate-container {
-  width: 150px;
+  width: 10%;
 }
 
 #heart-rate-graph {
-  flex: 1;
+  width: 80%;
   position: relative;
   height: 100%;
 }
 
 #heart-rate-scares {
-  width: 150px;
+  width: 10%;
 }
