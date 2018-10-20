@@ -44,10 +44,13 @@ body {
 
 #ghost-image {
   position: absolute;
-  top: -15px;
-  right: -15px;
   width: 40px;
-  transform: rotate(-155deg);
+  /* top: -15px;
+  right: -15px; */
+  /* transform: rotate(-155deg); */
+  top: 5px;
+  right: 5px;
+  transform: rotate(0deg);
   cursor: pointer;
   z-index: 1;
 }
@@ -77,4 +80,16 @@ body {
 
 #ghost-message.hover {
   right: 50px;
+}
+
+#toaster {
+  padding: 3px 15px;
+  background: #272727;
+  border-radius: 10px;
+  border: 1px solid black;
+  display: inline-block;
+  position: absolute;
+  top: -110px;
+  left: 5px;
+  transition: top 0.5s;
 }
