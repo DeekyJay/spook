@@ -24,12 +24,16 @@
             {
               "controlID": "toaster",
               "kind": "generic"
+            },
+            {
+              "controlID": "scare",
+              "kind": "generic"
             }
           ],
           "sceneID": "default"
         }
       ]
     },
-    "savedAt": 1531364978703
+    "savedAt": 1540070287189
   }
 ]
